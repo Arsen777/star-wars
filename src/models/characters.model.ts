@@ -5,4 +5,6 @@ export interface ICharacterType {
   skin_color: string,
   eye_color: string,
   mass: string,
+  height: string,
+  films: string[],
 };

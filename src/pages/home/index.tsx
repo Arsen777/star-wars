@@ -14,14 +14,16 @@ export default function Home() {
   const characters = useAppSelector(getCharacters);
 
   useEffect(() => {
-    dispatch(fetchCharacters());
-  }, [])
+    if (!characters.length) {
+      dispatch(fetchCharacters());
+    }
+  }, [characters, dispatch])
 
   return (
     <main className="home">
       <div className="cards">
         {characters.map((character, i) => (
-          <CharacterCard key={i} character={character} onClick={() => navigate(`/cardDetails/${character.mass}`)}/>
+          <CharacterCard key={i} character={character} onClick={() => navigate(`/card-details/${character.mass}`)}/>
         ))}
       </div>
     </main>

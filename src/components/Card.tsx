@@ -22,9 +22,6 @@ const CharacterCard: React.FC<CharacterCardType> = ({ character, onClick }) => {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <p>gender - {character.gender}</p>
-            <p>hair color - {character.hair_color}</p>
-            <p>skin color - {character.skin_color}</p>
-            <p>eye color - {character.eye_color}</p>
           </Typography>
         </CardContent>
       </CardActionArea>

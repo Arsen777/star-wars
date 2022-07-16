@@ -20,7 +20,7 @@ function App() {
             }
           />
           <Route
-            path="/card-details/:cardId"
+            path="card-details/:cardId"
             element={
               <Suspense fallback={<>...</>}>
                 <CardDetails />
