@@ -1,5 +1,4 @@
-import React, { lazy } from 'react';
-import logo from './logo.svg';
+import { lazy } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
@@ -9,12 +8,12 @@ const CardDetails = lazy(() => import('./pages/cardDetails'));
 function App() {
   return (
     <div className="App">
-    <h1>Star Wars</h1>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="card-details" element={<CardDetails />} />
-    </Routes>
-  </div>
+      <h1>Star Wars</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="card-details" element={<CardDetails />} />
+      </Routes>
+    </div>
   );
 }
 
