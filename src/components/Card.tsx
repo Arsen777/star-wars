@@ -1,34 +1,40 @@
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-export default function MultiActionAreaCard() {
+import { ICharacterType } from '../models/characters.model';
+
+import './style.scss';
+
+type CharacterCardType = {
+  character: ICharacterType;
+  onClick: () => void;
+} 
+
+const CharacterCard: React.FC<CharacterCardType> = ({ character, onClick }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card className='card' onClick={onClick}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {character.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            <p>gender - {character.gender}</p>
+            <p>hair color - {character.hair_color}</p>
+            <p>skin color - {character.skin_color}</p>
+            <p>eye color - {character.eye_color}</p>
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
+        <Button size="small" color="primary" onClick={onClick}>
+          See Details
         </Button>
       </CardActions>
     </Card>
   );
 }
+
+export default CharacterCard;

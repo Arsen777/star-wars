@@ -11,7 +11,7 @@ function App() {
       <h1>Star Wars</h1>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="card-details" element={<CardDetails />} />
+        <Route path="/card-details/:cardId" element={<CardDetails />} />
       </Routes>
     </div>
   );

@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import MultiActionAreaCard from "../../components/Card";
+import { useNavigate } from "react-router-dom";
+
+import CharacterCard from "../../components/Card";
+import { ICharacterType } from "../../models/characters.model";
 
 import './style.scss';
 
 export default function Home() {
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState<ICharacterType[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStarWars = async () => {
@@ -21,8 +25,8 @@ export default function Home() {
   return (
     <main className="home">
       <div className="cards">
-        {characters.map((el, i) => (
-          <MultiActionAreaCard key={i}/>
+        {characters.map((character, i) => (
+          <CharacterCard key={i} character={character} onClick={() => navigate(`/cardDetails/${character.mass}`)}/>
         ))}
       </div>
     </main>
