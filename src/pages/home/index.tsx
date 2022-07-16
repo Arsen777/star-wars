@@ -1,24 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import CharacterCard from "../../components/Card";
-import { ICharacterType } from "../../models/characters.model";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { getCharacters } from "../../store/selectors";
+import { fetchCharacters } from "../../store/actions/characters";
 
 import './style.scss';
 
 export default function Home() {
-  const [characters, setCharacters] = useState<ICharacterType[]>([]);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const characters = useAppSelector(getCharacters);
 
   useEffect(() => {
-    const fetchStarWars = async () => {
-      const response = await fetch(`${process.env.REACT_APP_STAR_WARS_API}/people`)
-      const { results } = await response.json();
-
-      setCharacters(results);
-    }
-
-    fetchStarWars();
+    dispatch(fetchCharacters());
   }, [])
 
   return (
