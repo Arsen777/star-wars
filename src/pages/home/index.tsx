@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <main className="home">
       <div className="cards">
-        {characters.map((character, i) => (
-          <CharacterCard key={i} character={character} onClick={() => navigate(`/card-details/${character.mass}`)}/>
+        {characters.map((character, index) => (
+          <CharacterCard key={index} character={character} onClick={() => navigate(`/card-details/${index}`)}/> // The data has no id per object, that's why I should use index as a key
         ))}
       </div>
     </main>

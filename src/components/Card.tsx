@@ -20,13 +20,13 @@ const CharacterCard: React.FC<CharacterCardType> = ({ character, onClick }) => {
           <Typography gutterBottom variant="h5" component="div">
             {character.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <p>gender - {character.gender}</p>
+          <Typography variant="body1" color="text.secondary">
+            gender - {character.gender}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={onClick}>
+        <Button size="small" color="primary">
           See Details
         </Button>
       </CardActions>
