@@ -15,11 +15,20 @@ export default function Home() {
   const characters = useAppSelector(getCharacters);
 
   const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (!characters.length) {
-      dispatch(fetchCharacters());
+    const requestCharacters = async () => {
+      if (!characters.length) {
+        setIsLoading(true);
+  
+        await dispatch(fetchCharacters());
+  
+        setIsLoading(false);
+      }
     }
+
+    requestCharacters();
   }, [characters, dispatch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -33,6 +42,10 @@ export default function Home() {
     [characters, search]
   );
 
+  if (isLoading) {
+    return <p>... loading data</p>
+  }
+
   return (
     <main className="home">
       <div className="search-field">
@@ -45,13 +58,17 @@ export default function Home() {
         />
       </div>
       <div className="cards">
-        {filteredCharacters.map((character, index) => (
-          <CharacterCard
-            key={index}
-            character={character}
-            onClick={() => navigate(`/card-details/${index}`)}
-          /> // The data has no id per object, that's why I should use index as a key
-        ))}
+        {filteredCharacters.length ? (
+          filteredCharacters.map((character, index) => (
+            <CharacterCard
+              key={index}
+              character={character}
+              onClick={() => navigate(`/card-details/${index}`)}
+            /> // The data has no id per object, that's why I should use index as a key
+          ))
+        ) : (
+          <div className='no-character-found'>No character found</div>
+        )}
       </div>
     </main>
   );
