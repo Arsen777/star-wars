@@ -14,7 +14,7 @@ function App() {
           <Route
             path="/"
             element={
-              <Suspense fallback={<>...</>}>
+              <Suspense fallback="">
                 <Home />
               </Suspense>
             }
@@ -22,7 +22,7 @@ function App() {
           <Route
             path="card-details/:cardIndex"
             element={
-              <Suspense fallback={<>...</>}>
+              <Suspense fallback="">
                 <CardDetails />
               </Suspense>
             }

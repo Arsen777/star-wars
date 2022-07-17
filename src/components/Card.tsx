@@ -10,11 +10,11 @@ import './style.scss';
 type CharacterCardType = {
   character: ICharacterType;
   onClick: () => void;
-} 
+};
 
 const CharacterCard: React.FC<CharacterCardType> = ({ character, onClick }) => {
   return (
-    <Card className='card' onClick={onClick}>
+    <Card className="card" onClick={onClick}>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -32,6 +32,6 @@ const CharacterCard: React.FC<CharacterCardType> = ({ character, onClick }) => {
       </CardActions>
     </Card>
   );
-}
+};
 
 export default CharacterCard;

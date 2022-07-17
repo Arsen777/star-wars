@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchCharacters } from "../../store/actions/characters";
-import { getCharacterById, getCharacters } from "../../store/selectors";
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchCharacters } from '../../store/actions/characters';
+import { getCharacterById, getCharacters } from '../../store/selectors';
 
 import './style.scss';
 
@@ -11,13 +11,15 @@ export default function CardDetails() {
   const dispatch = useAppDispatch();
   const { cardIndex = '' } = useParams();
   const characters = useAppSelector(getCharacters);
-  const character = useAppSelector(store => getCharacterById(store, Number(cardIndex)));
+  const character = useAppSelector((store) =>
+    getCharacterById(store, Number(cardIndex))
+  );
 
   useEffect(() => {
     if (!characters.length) {
       dispatch(fetchCharacters());
     }
-  }, [characters, dispatch])
+  }, [characters, dispatch]);
 
   return (
     <div className="card-details">
